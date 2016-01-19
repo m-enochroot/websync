@@ -1,0 +1,55 @@
+<navbar></navbar>
+
+<div class="container">
+
+  <h1 class="page-header">Available data </h1>
+
+  <div class="row">
+
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked">
+      <div ngf-drop ngf-select ng-model="main.files" class="drop-box"
+           ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+           accept="image/*,application/pdf"
+           ngf-pattern="'image/*,application/pdf,application/zip'">Drop zips, pdfs or images here or click to upload</div>
+      <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+      <div>{{main.log}}</div>
+      <!--
+      <div class="caption">
+        <h4>
+          <a ng-hide="main.f.progress >= 0" tooltip="Drop any zip files you want to share" type="main.file"
+             ngf-select="main.uploadFiles($file, $invalidFiles)"
+             accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Add archive file</a>
+          <!-- <a ng-show="main.f.progress >= 0">{{main.f.name}} <uib-progressbar value="{{main.f.progress}}" max="100" animate="true" type="info">Upload {{main.f.progress}}%</uib-progressbar></a> -->
+<!--
+        </h4>
+      </div>
+    -->
+      <!--
+      <div ngf-select="" ngf-drop="" ng-model="files" ngf-model-invalid="invalidFiles"
+           ng-model-options="modelOptionsObj" ngf-multiple="multiple" ngf-pattern="pattern" ngf-accept="acceptSelect"
+           ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="dragOverClassObj"
+           ngf-validate="validateObj" ngf-resize="resizeObj" ngf-resize-if="resizeIfFn($file, $width, $height)"
+           ngf-dimensions="dimensionsFn($file, $width, $height)" ngf-duration="durationFn($file, $duration)"
+           ngf-keep="keepDistinct ? 'distinct' : keep" ngf-fix-orientation="orientation" ngf-allow-dir="allowDir"
+           class="drop-box" ngf-drop-available="dropAvailable">Select File
+        <span ng-show="dropAvailable"> or Drop File</span>
+      </div>
+      -->
+    </div>
+
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="thing in main.awesomeThings">
+      <div class="caption">
+        <h4><a href="#" tooltip="{{thing.info}}">{{thing.name}}
+          <button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button>
+        </a></h4>
+      </div>
+      <qr text="'http://janantala.github.io/angular-qr/demo/'" type-number="0" correction-level="M" size="250"
+          image="true"></qr>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer></footer>
