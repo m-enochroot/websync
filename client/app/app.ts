@@ -12,7 +12,8 @@ angular.module('gatewayApp', [
   'ui.bootstrap',
   'validation.match',
   'ngFileUpload',
-  'ja.qr'
+  'ja.qr',
+  'monospaced.qrcode'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

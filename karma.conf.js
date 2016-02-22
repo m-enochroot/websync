@@ -32,6 +32,8 @@ module.exports = function(config) {
       'client/bower_components/angular-deckgrid/angular-deckgrid.js',
       'client/bower_components/qrcode/lib/qrcode.js',
       'client/bower_components/angular-qr/src/angular-qr.js',
+      'client/bower_components/qrcode-generator/js/qrcode.js',
+      'client/bower_components/angular-qrcode/angular-qrcode.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

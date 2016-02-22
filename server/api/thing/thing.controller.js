@@ -11,6 +11,8 @@
 
 import _ from 'lodash';
 import Thing from './thing.model';
+import del from 'del';
+
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -36,7 +38,10 @@ function removeEntity(res) {
     if (entity) {
       return entity.removeAsync()
         .then(() => {
-          res.status(204).end();
+          console.log('Remove ./public/uploads/' + entity.code);
+            del('./public/uploads/' + entity.code).then(() => {
+              res.status(204).end();
+          });
         });
     }
   };

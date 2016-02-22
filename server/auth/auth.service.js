@@ -27,6 +27,7 @@ export function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
+      //console.log(req);
       User.findByIdAsync(req.user._id)
         .then(user => {
           if (!user) {

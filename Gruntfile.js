@@ -558,6 +558,7 @@ module.exports = function (grunt) {
     },
 
     // Compiles ES6 to JavaScript using Babel
+    // Compiles ES6 to JavaScript using Babel
     babel: {
       options: {
         sourceMap: true,
@@ -633,7 +634,7 @@ module.exports = function (grunt) {
             return '<script src="' + filePath + '"></script>';
           },
           sort: function(a, b) {
-            var module = /\.module\.js$/;
+            var module = /\.module\.(js|ts)$/;
             var aMod = module.test(a);
             var bMod = module.test(b);
             // inject *.module.js first
@@ -733,7 +734,7 @@ module.exports = function (grunt) {
       'clean:server',
       'env:all',
       'concurrent:pre',
-      'tsd',
+      //'tsd',
       'concurrent:server',
       'injector',
       'wiredep:client',
@@ -852,7 +853,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'concurrent:pre',
-    'tsd',
+    //'tsd',
     'concurrent:dist',
     'injector',
     'wiredep:client',
@@ -863,7 +864,7 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'babel:server',
-    'cdnify',
+    //'cdnify',
     'cssmin',
     'uglify',
     'filerev',
@@ -871,7 +872,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
+    //'newer:jshint',
     'test',
     'build'
   ]);

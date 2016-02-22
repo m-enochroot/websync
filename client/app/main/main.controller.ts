@@ -13,7 +13,11 @@
       this.watchForFilesDropping();
 
       $http.get('/api/things').then(response => {
-        this.awesomeThings = response.data;
+        this.awesomeThings = response.data.map( thing => {
+          thing.urlScheme = 'gateway://localhost:9000/uploads/' + thing.code;
+          return thing;
+        });
+
         socket.syncUpdates('thing', this.awesomeThings);
       });
 
