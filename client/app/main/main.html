@@ -20,7 +20,7 @@
         <div>{{thing.date}}</div>
       </div>
       <div class="file-qrcode">
-        <qrcode version="10" error-correction-level="M" size="250" data="gateway://172.16.70.155/9000/res/{{thing.code}}" href="gateway://172.16.70.155:9000/res/{{thing.code}}"></qrcode>
+        <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}" href="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}"></qrcode>
 </div>
     </div>
 

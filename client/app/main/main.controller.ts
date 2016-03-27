@@ -4,11 +4,16 @@
 
   class MainController {
 
-    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout) {
+    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location) {
 
       this.$http = $http;
       this.Upload = Upload;
       this.$timeout = $timeout;
+      this.$location = $location;
+
+      this.host = $location.host();
+
+      this.port = $location.port();
 
       this.watchForFilesDropping();
 

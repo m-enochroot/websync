@@ -33,7 +33,7 @@ describe('Thing API Router:', function() {
   it('should return an express router instance', function() {
     expect(thingIndex).to.equal(routerStub);
   });
-
+/*
   describe('GET /api/things', function() {
 
     it('should route to thing.controller.index', function() {
@@ -43,7 +43,7 @@ describe('Thing API Router:', function() {
     });
 
   });
-
+*/
   describe('GET /api/things/:id', function() {
 
     it('should route to thing.controller.show', function() {
