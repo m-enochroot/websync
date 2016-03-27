@@ -1,12 +1,21 @@
 language: node_js
 node_js:
-  - 4.2.3
+- 4.2.3
 matrix:
   fast_finish: true
   allow_failures:
-    - node_js: 5.1.1
+  - node_js: 5.1.1
 before_script:
-  - npm install -g bower grunt-cli
-  - gem install sass
-  - bower install
+- npm install -g bower grunt-cli
+- gem install sass
+- bower install
 services: mongodb
+deploy:
+  provider: openshift
+  user: jerome.mare@gfi.fr
+  password:
+    secure: fQYWdBKqixJI6lgMU4XQ2nsR+Nlvwgua8TF1dkzoIy53EufJKiPAj1+c0bjE9Z6GD9pxXfniiF4Z8Xj643FRX3F3lx9+/GvipZ1CfNBnb6OP/LOb0gWg1dhzFFpGBxjS+n4AKbTqVYiBTgYjgtruLvibYqK9Q4p7HBLa0cfOl8GbW3GQKzXUteSm3RUyLnucVKGGx2/G1QeSAnIedyI0Q+3evrjwcCJIs/+3RyQQN3nKVpliBOnzWTmVuyGN/3fr0PkWj6A3c71BdiWbAmebexZD+5oQr9iQACdemudRRqm7G82Vdmh7cfQ2ZsVgYs0qHWPdoMqqVmSiEw2eQecWN3+MhQ6hwGLAX9CJwzwfuMhjIaGqLtu02YTUpYXijBA/W/2OoiqC2NzlYdjFdavCLM+mUrZEq7XbJqu4UOsuynwM3wcbZGiRlIhQX8SzLUgh3gWMOyt2cm1Akbu+quQN0BS7wah8+UPZ7xqX2wBEoq/74g4gJAgzpNS/W7/2wAD21Cf0Buc5HOcGX1bXKIy6GLjqQ3defhLX0wVs6jJKTgCU413NKErO+vnJMG7Edsd0W87/HrWYKNKt4oe4D1V6MpEiYzRHiwkqaXBKoBrCzPanWjwAmotb3RJiPMGRxbxCKp4B6HVlS0N6HzoIhpQVBImOLb/RyTYFHcPqAu3w9YA=
+  app: gateway
+  domain: gfitls
+  on:
+    repo: m-enochroot/websync
