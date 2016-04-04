@@ -6,7 +6,7 @@ rm -rf ./dist
 # Build the webapp to be deployed from source
 grunt build
 
-# Copy openshift specific files
+# Copy openshift specific files from sources
 cp -Rf ./deployment/openshift/ ./dist/
 
 # Initialize Git local repository
