@@ -19,7 +19,8 @@ deploy:
   app: gateway
   domain: gfitls
   on:
-    repo: m-enochroot/websync
+    all_branches: true
+
 after_success:
   - ./scripts/deploy_openshift.sh
   - cd ./dist
