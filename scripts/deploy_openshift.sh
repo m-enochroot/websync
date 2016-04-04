@@ -7,7 +7,7 @@ rm -rf ./dist
 grunt build
 
 # Copy openshift specific files
-cp -Rf ./deployment/openshift/ ./dist
+cp -Rf ./deployment/openshift/ ./dist/
 
 # Initialize Git local repository
 cd ./dist
