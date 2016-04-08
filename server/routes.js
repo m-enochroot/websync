@@ -27,8 +27,9 @@ var storage = multer.diskStorage({
   }
 });
 
-var upload = multer({ storage : storage });
-
+var upload = multer({ //multer settings
+                    storage: storage
+                }).single('file');
 
 export default function(app) {
   // Insert routes below
@@ -50,18 +51,33 @@ export default function(app) {
     res.setHeader('Content-disposition', 'attachment; filename=' + filename);
   }
 
-  app.post('/upload', upload.single('file'), function (req, res, next) {
-    // req.files is array of `photos` files
-    // req.body will contain the text fields, if there were any
-    console.log(req.file.originalname);
-    console.log(req.file.filename);
-    Thing.create({
-      name: req.file.originalname,
-      info: 'Data file',
-      code: req.file.filename,
-      date: moment().format('LLLL')
-    });
+  /** API path that will upload the files */
+  app.post('/upload', function (req, res) {
+    upload(req, res, function (err) {
 
+      // Manage errors
+      if (err) {
+        res.json({
+          error_code: 1,
+          err_desc:err
+        });
+        return;
+      }
+
+      // Create the file in database
+      Thing.create({
+        name: req.file.originalname,
+        info: 'Data file',
+        code: req.file.filename,
+        date: moment().format('LLLL')
+      });
+
+      // Return successfull response
+      res.json({
+        error_code: 0,
+        err_desc: null
+      });
+    });
   });
 
   // All other routes should redirect to the index.html
