@@ -3,9 +3,9 @@
 <div class="container">
 
   <div ngf-drop ngf-select ng-model="main.files" class="drop-box pull-right"
-       ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-       accept="image/*,application/pdf"
-       ngf-pattern="'image/*,application/pdf,application/zip'">Drop zips, pdfs or images here or click to upload</div>
+  ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+  accept="image/*,application/pdf"
+  ngf-pattern="'image/*,application/pdf,application/zip'">Drop zips, pdfs or images here or click to upload</div>
   <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
   <h1 class="page-header">Available data </h1>
 
@@ -21,8 +21,18 @@
       </div>
       <div class="file-qrcode">
         <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}" href="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}"></qrcode>
-</div>
+      </div>
     </div>
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="upload in main.uploadInProgress">
+      <div class="caption">
+        <h4>{{upload.file}} - Upload in progress</h4>
+        <div class="col-sm-4"><uib-progressbar class="progress-striped" value="{{upload.progress}}" type="warning">{{upload.progress}}%</uib-progressbar></div>
+      </div>
+      <div class="file-qrcode">
+        <qrcode version="10" error-correction-level="M" size="250" data="toto" href="toto"></qrcode>
+      </div>
+    </div>
+
 
   </div>
 

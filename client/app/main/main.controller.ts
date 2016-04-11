@@ -16,6 +16,7 @@
       this.port = $location.port();
 
       this.watchForFilesDropping();
+      this.uploadInProgress = [];
 
       $http.get('/api/things').then(response => {
         this.awesomeThings = response.data.map( thing => {
@@ -75,6 +76,11 @@
         for (var i = 0; i < files.length; i++) {
           var file = files[i];
           if (!file.$error) {
+            var myUpload = {
+              file: file.name,
+              progress: 0
+            };
+            var uploadIndex = this.uploadInProgress.push(myUpload);
             this.Upload.upload({
               url: '/upload',
               data: {
@@ -83,14 +89,17 @@
               }
             }).then((resp) => {
               this.$timeout(() => {
+                this.uploadInProgress.pop();
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
                   '\n' + this.log;
+                console.log(this.log);
               });
             }, null, (evt) => {
 
               var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              myUpload.progress = progressPercentage
               this.log = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name + '\n' + this.log;
             });
           }
