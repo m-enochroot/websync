@@ -57,6 +57,7 @@
 
     }
 
+
     addThing() {
       if (this.newThing) {
         this.$http.post('/api/things', { name: this.newThing });
@@ -89,12 +90,16 @@
               }
             }).then((resp) => {
               this.$timeout(() => {
+                myUpload.progress = 100;
+                this.uploadInProgress = this.uploadInProgress.filter((item) => {
+	                return item.progress !== 100;
+                });
+
                 this.uploadInProgress.pop();
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
                   '\n' + this.log;
-                console.log(this.log);
               });
             }, null, (evt) => {
 

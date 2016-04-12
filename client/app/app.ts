@@ -14,7 +14,8 @@ angular.module('gatewayApp', [
   'validation.match',
   'ngFileUpload',
   'ja.qr',
-  'monospaced.qrcode'
+  'monospaced.qrcode',
+  'angular-svg-round-progressbar'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

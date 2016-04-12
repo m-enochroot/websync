@@ -35,6 +35,7 @@ module.exports = function(config) {
       'client/bower_components/qrcode-generator/js/qrcode.js',
       'client/bower_components/angular-qrcode/angular-qrcode.js',
       'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-svg-round-progressbar/build/roundProgress.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
