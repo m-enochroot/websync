@@ -16,6 +16,7 @@
       this.port = $location.port();
 
       this.watchForFilesDropping();
+      this.uploadInProgress = [];
 
       $http.get('/api/things').then(response => {
         this.awesomeThings = response.data.map( thing => {
@@ -41,6 +42,15 @@
     file = null;
     newThing = null;
 
+    private setUploadProgress(filename, progress) {
+      this.uploadInProgress = this.uploadInProgress.map((item) => {
+        if ( item.file === filename) {
+         item.progress = progress;
+        }
+        return item;
+      });
+    }
+
     private watchForFilesDropping() {
 
       this.$scope.$watch(() => this.files, (newFiles) => {
@@ -55,6 +65,7 @@
 
 
     }
+
 
     addThing() {
       if (this.newThing) {
@@ -75,6 +86,12 @@
         for (var i = 0; i < files.length; i++) {
           var file = files[i];
           if (!file.$error) {
+            var myUpload = {
+              file: file.name,
+              progress: 0
+            };
+            var uploadIndex = this.uploadInProgress.push(myUpload);
+
             this.Upload.upload({
               url: '/upload',
               data: {
@@ -83,6 +100,11 @@
               }
             }).then((resp) => {
               this.$timeout(() => {
+                myUpload.progress = 100;
+                this.uploadInProgress = this.uploadInProgress.filter((item) => {
+	                return item.progress !== 100;
+                });
+
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
@@ -91,6 +113,9 @@
             }, null, (evt) => {
 
               var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              var dataFilename = evt.config.data.file.name;
+
+              this.setUploadProgress(dataFilename, progressPercentage);
               this.log = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name + '\n' + this.log;
             });
           }
