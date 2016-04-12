@@ -19,7 +19,7 @@ deploy:
   app: gateway
   domain: gfitls
   on:
-    all_branches: true
+    branch: develop
 
 after_success:
   - ./scripts/deploy_openshift.sh
