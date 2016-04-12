@@ -42,6 +42,15 @@
     file = null;
     newThing = null;
 
+    private setUploadProgress(filename, progress) {
+      this.uploadInProgress = this.uploadInProgress.map((item) => {
+        if ( item.file === filename) {
+         item.progress = progress;
+        }
+        return item;
+      });
+    }
+
     private watchForFilesDropping() {
 
       this.$scope.$watch(() => this.files, (newFiles) => {
@@ -82,6 +91,7 @@
               progress: 0
             };
             var uploadIndex = this.uploadInProgress.push(myUpload);
+
             this.Upload.upload({
               url: '/upload',
               data: {
@@ -95,7 +105,6 @@
 	                return item.progress !== 100;
                 });
 
-                this.uploadInProgress.pop();
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
@@ -104,7 +113,9 @@
             }, null, (evt) => {
 
               var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-              myUpload.progress = progressPercentage
+              var dataFilename = evt.config.data.file.name;
+
+              this.setUploadProgress(dataFilename, progressPercentage);
               this.log = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name + '\n' + this.log;
             });
           }
