@@ -41,5 +41,8 @@
         "client/typings/lodash/lodash.d.ts",
         "client/typings/socket.io-client/socket.io-client.d.ts",
         "client/typings/tsd.d.ts"
-    ]
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
 }

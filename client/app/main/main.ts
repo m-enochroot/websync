@@ -8,7 +8,7 @@ angular.module('gatewayApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',
-        authenticate: 'admin'
+        authenticate: 'user'
       });
   }).run(function($rootScope) {
   $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {

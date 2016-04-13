@@ -35,6 +35,11 @@
     private $http;
     private Upload;
     private $timeout;
+    private $location;
+    private host;
+    private port;
+    private uploadInProgress;
+
 
     log = '';
     awesomeThings = [];
@@ -104,7 +109,6 @@
                 this.uploadInProgress = this.uploadInProgress.filter((item) => {
 	                return item.progress !== 100;
                 });
-
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
@@ -112,7 +116,7 @@
               });
             }, null, (evt) => {
 
-              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              var progressPercentage = Math.round((100.0 * evt.loaded) / evt.total);
               var dataFilename = evt.config.data.file.name;
 
               this.setUploadProgress(dataFilename, progressPercentage);
