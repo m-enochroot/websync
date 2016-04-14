@@ -16,7 +16,7 @@
         <h4><a href="res/{{thing.code}}" target="_self" tooltip="{{thing.info}}">{{thing.name}}</a>
           <button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button>
         </h4>
-        <div>{{thing.date}}</div>
+        <div>{{thing.date}} by {{thing.user}}</div>
       </div>
       <div class="file-qrcode">
         <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}" href="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}"></qrcode>

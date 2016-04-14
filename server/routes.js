@@ -67,6 +67,7 @@ export default function(app) {
       // Create the file in database
       Thing.create({
         name: req.file.originalname,
+        user: req.body.username,
         info: 'Data file',
         code: req.file.filename,
         date: moment().format('LLLL')

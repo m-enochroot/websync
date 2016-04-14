@@ -4,7 +4,7 @@
 
   class MainController {
 
-    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location) {
+    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location, Auth) {
 
       this.$http = $http;
       this.Upload = Upload;
@@ -17,10 +17,12 @@
 
       this.watchForFilesDropping();
       this.uploadInProgress = [];
+      this.Auth = Auth;
 
       $http.get('/api/things').then(response => {
         this.awesomeThings = response.data.map( thing => {
-          thing.urlScheme = 'gateway://localhost:9000/uploads/' + thing.code;
+          console.log(thing);
+          thing.urlScheme = 'gateway://' + this.host + ':' + this.port + '/uploads/' + thing.code;
           return thing;
         });
 
@@ -39,6 +41,7 @@
     private host;
     private port;
     private uploadInProgress;
+    private Auth;
 
 
     log = '';
@@ -97,10 +100,12 @@
             };
             var uploadIndex = this.uploadInProgress.push(myUpload);
 
+            var user = this.Auth.getCurrentUser();
+
             this.Upload.upload({
               url: '/upload',
               data: {
-                username: 'admin',
+                username: user.name,
                 file: file
               }
             }).then((resp) => {
