@@ -5,13 +5,20 @@
   <div ngf-drop ngf-select ng-model="main.files" class="drop-box"
        ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="false" ngf-select-disabled="true">
 
-  <h1 class="page-header">Available data</h1>
+<div class="pull-right">
+  <form role="search">
+
+           <input ng-model="search" type="text" class="form-control" placeholder="Search">
+
+     </form>
+   </div>
+     <h1 class="page-header">Available data</h1>
   <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
 
 
   <div class="row">
 
-    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="thing in main.awesomeThings">
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="thing in main.awesomeThings | filter: search">
       <div class="caption">
         <h4><a href="res/{{thing.code}}" target="_self" tooltip="{{thing.info}}">{{thing.name}}</a>
           <button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button>

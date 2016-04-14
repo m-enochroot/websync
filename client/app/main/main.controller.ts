@@ -43,6 +43,7 @@
     private uploadInProgress;
     private Auth;
 
+    private search;
 
     log = '';
     awesomeThings = [];
