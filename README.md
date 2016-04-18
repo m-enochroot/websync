@@ -1,8 +1,14 @@
-# gateway
+# WebSync
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0-beta.0.
+We use a [Trello board](https://trello.com/b/Trim8lOb) to follow up the project
+
+## The project
+
+TODO
 
 ## Getting Started
+
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0-beta.0.
 
 ### Prerequisites
 
