@@ -1,3 +1,5 @@
+![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") 
+
 # WebSync
 
 We use a [Trello board](https://trello.com/b/Trim8lOb) to follow up the project
