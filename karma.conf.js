@@ -71,7 +71,12 @@ module.exports = function(config) {
     // - junit
     // - growl
     // - coverage
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+      type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
+      dir: 'coverage/karma'
+    },
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
@@ -88,6 +93,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };

@@ -693,6 +693,27 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    sonarRunner: {
+            analysis: {
+                options: {
+                    debug: true,
+                    separator: '\n',
+                    sonar: {
+                        host: {
+                            url: 'http://192.168.99.100:32772'
+                        },
+                        projectKey: 'sonar:websync:0.1',
+                        projectName: 'WebSync',
+                        projectVersion: '0.1',
+                        sources: ['server'].join(','),
+                        language: 'js',
+                        sourceEncoding: 'UTF-8'
+                    }
+                }
+            }
+        }
+
   });
 
   // Used for delaying livereload until after server has restarted
@@ -876,4 +897,10 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+    grunt.registerTask('sonar', [
+      //'test',
+      //'build',
+      'sonarRunner'
+    ]);
 };
