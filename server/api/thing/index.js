@@ -5,7 +5,7 @@ import * as auth from '../../auth/auth.service';
 
 var router = new Router();
 
-router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/', auth.hasRole('user'), controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

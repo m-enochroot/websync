@@ -34,6 +34,8 @@ module.exports = function(config) {
       'client/bower_components/angular-qr/src/angular-qr.js',
       'client/bower_components/qrcode-generator/js/qrcode.js',
       'client/bower_components/angular-qrcode/angular-qrcode.js',
+      'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-svg-round-progressbar/build/roundProgress.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
@@ -69,7 +71,12 @@ module.exports = function(config) {
     // - junit
     // - growl
     // - coverage
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+      type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
+      dir: 'coverage/karma'
+    },
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
@@ -86,6 +93,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };

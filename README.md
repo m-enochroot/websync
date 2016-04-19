@@ -1,11 +1,16 @@
+![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") [![Coverage Status](https://coveralls.io/repos/github/m-enochroot/websync/badge.svg?branch=master)](https://coveralls.io/github/m-enochroot/websync?branch=master)
 
-05 62 85 12 65 => stef
+# WebSync
 
-# gateway
+We use a [Trello board](https://trello.com/b/Trim8lOb) to follow up the project
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0-beta.0.
+## The project
+
+TODO
 
 ## Getting Started
+
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0-beta.0.
 
 ### Prerequisites
 

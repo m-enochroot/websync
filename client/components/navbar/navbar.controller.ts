@@ -10,6 +10,10 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
+  isLoggedIn : boolean;
+  isAdmin : boolean;
+  getCurrentUser;
+
   constructor(Auth) {
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;

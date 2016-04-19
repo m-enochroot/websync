@@ -4,7 +4,7 @@
 
   class MainController {
 
-    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location) {
+    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location, Auth) {
 
       this.$http = $http;
       this.Upload = Upload;
@@ -16,10 +16,13 @@
       this.port = $location.port();
 
       this.watchForFilesDropping();
+      this.uploadInProgress = [];
+      this.Auth = Auth;
 
       $http.get('/api/things').then(response => {
         this.awesomeThings = response.data.map( thing => {
-          thing.urlScheme = 'gateway://localhost:9000/uploads/' + thing.code;
+          console.log(thing);
+          thing.urlScheme = 'gateway://' + this.host + ':' + this.port + '/uploads/' + thing.code;
           return thing;
         });
 
@@ -34,12 +37,28 @@
     private $http;
     private Upload;
     private $timeout;
+    private $location;
+    private host;
+    private port;
+    private uploadInProgress;
+    private Auth;
+
+    private search;
 
     log = '';
     awesomeThings = [];
     files = [];
     file = null;
     newThing = null;
+
+    private setUploadProgress(filename, progress) {
+      this.uploadInProgress = this.uploadInProgress.map((item) => {
+        if ( item.file === filename) {
+         item.progress = progress;
+        }
+        return item;
+      });
+    }
 
     private watchForFilesDropping() {
 
@@ -55,6 +74,7 @@
 
 
     }
+
 
     addThing() {
       if (this.newThing) {
@@ -75,14 +95,26 @@
         for (var i = 0; i < files.length; i++) {
           var file = files[i];
           if (!file.$error) {
+            var myUpload = {
+              file: file.name,
+              progress: 0
+            };
+            var uploadIndex = this.uploadInProgress.push(myUpload);
+
+            var user = this.Auth.getCurrentUser();
+
             this.Upload.upload({
               url: '/upload',
               data: {
-                username: 'admin',
+                username: user.name,
                 file: file
               }
             }).then((resp) => {
               this.$timeout(() => {
+                myUpload.progress = 100;
+                this.uploadInProgress = this.uploadInProgress.filter((item) => {
+	                return item.progress !== 100;
+                });
                 this.log = 'file: ' +
                   resp.config.data.file.name +
                   ', Response: ' + JSON.stringify(resp.data) +
@@ -90,7 +122,10 @@
               });
             }, null, (evt) => {
 
-              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+              var progressPercentage = Math.round((100.0 * evt.loaded) / evt.total);
+              var dataFilename = evt.config.data.file.name;
+
+              this.setUploadProgress(dataFilename, progressPercentage);
               this.log = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name + '\n' + this.log;
             });
           }

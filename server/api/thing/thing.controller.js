@@ -12,6 +12,7 @@
 import _ from 'lodash';
 import Thing from './thing.model';
 import del from 'del';
+import User from '../user/user.model';
 
 
 function respondWithResult(res, statusCode) {
@@ -66,7 +67,17 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  Thing.findAsync()
+
+  var user = req.user;
+  var query = { };
+  if ('admin' === user.role) {
+    // If admin role, all files will be managed
+    query = { };
+  } else {
+    // Else, only user files are returned
+    query = { user: { $eq: user.name } };
+  }
+  Thing.findAsync(query, '-salt -password')
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

@@ -19,7 +19,13 @@ deploy:
   app: gateway
   domain: gfitls
   on:
-    all_branches: true
+    branch: develop
+
+after_script:
+  - ./node_modules/karma/bin/karma start
+  - istanbul cover ./node_modules/mocha/bin/_mocha server/api/**/*.spec.js
+  - cat ./coverage/lcov.info ./coverage/karma/**/*.info > lcov.info
+  - node node_modules/lcov-filter/index.js lcov.info config | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 
 after_success:
   - ./scripts/deploy_openshift.sh
