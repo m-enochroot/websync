@@ -1,5 +1,5 @@
-![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") ![Coverage Status](https://coveralls.io/repos/github/m-enochroot/websync/badge.svg?branch=master)](https://coveralls.io/github/m-enochroot/websync?branch=master)
-![Dependencies status](https://david-dm.org/m-enochroot/websync.svg)
+![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") [![Coverage Status](https://coveralls.io/repos/github/m-enochroot/websync/badge.svg?branch=master)](https://coveralls.io/github/m-enochroot/websync?branch=master)
+[![Dependencies status](https://david-dm.org/m-enochroot/websync.svg)](https://david-dm.org/m-enochroot/websync)
 
 # WebSync
 
