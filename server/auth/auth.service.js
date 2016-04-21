@@ -27,14 +27,16 @@ export function isAuthenticated() {
     })
     // Attach user to request
     .use(function(req, res, next) {
-      //console.log(req);
-      User.findByIdAsync(req.user._id)
+      User.findById(req.user._id).exec()
         .then(user => {
           if (!user) {
             return res.status(401).end();
           }
           req.user = user;
           next();
+          // Fix for Bluebird 3 warning against promise chaining
+          // See https://github.com/angular-fullstack/generator-angular-fullstack/issues/1736
+          return null;
         })
         .catch(err => next(err));
     });

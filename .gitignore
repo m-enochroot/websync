@@ -10,3 +10,4 @@ npm-debug.log
 *.tmp.txt
 .sonar
 coverage
+.tscache
