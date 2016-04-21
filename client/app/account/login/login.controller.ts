@@ -10,6 +10,12 @@ class LoginController {
     this.$state = $state;
   }
 
+  errors;
+  user;
+  submitted;
+  Auth;
+  $state;
+
   login(form) {
     this.submitted = true;
 

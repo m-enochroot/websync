@@ -8,7 +8,7 @@ angular.module('gatewayApp')
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function(scope, element, attrs, ngModel) {
+      link: function(scope, element, attrs, ngModel : any) {
         element.on('keydown', () => ngModel.$setValidity('mongoose', true));
       }
     };

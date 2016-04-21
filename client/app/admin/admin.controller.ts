@@ -8,6 +8,8 @@ class AdminController {
     this.users = User.query();
   }
 
+  users;
+
   delete(user) {
     user.$remove();
     this.users.splice(this.users.indexOf(user), 1);

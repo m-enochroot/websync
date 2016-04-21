@@ -150,7 +150,7 @@ console.log('OK');
 
   }
 
-  angular.module('gatewayApp')
+  (<any> angular.module('gatewayApp'))
     .component('main', {
       templateUrl: 'app/main/main.html',
       controller: MainController
