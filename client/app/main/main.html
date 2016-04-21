@@ -1,35 +1,33 @@
-<navbar></navbar>
-
 <div class="container">
 
-  <div ngf-drop ngf-select ng-model="main.files" class="drop-box"
-       ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="false" ngf-select-disabled="true">
+  <div ngf-drop ngf-select ng-model="$ctrl.files" class="drop-box"
+  ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="false" ngf-select-disabled="true">
 
-<div class="pull-right">
-  <form role="search">
+  <div class="pull-right">
+    <form role="search">
 
-           <input ng-model="search" type="text" class="form-control" placeholder="Search">
+      <input ng-model="search" type="text" class="form-control" placeholder="Search">
 
-     </form>
-   </div>
-     <h1 class="page-header">Available data</h1>
+    </form>
+  </div>
+  <h1 class="page-header">Available data</h1>
   <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
 
 
   <div class="row">
 
-    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="thing in main.awesomeThings | filter: search">
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="thing in $ctrl.awesomeThings | filter: search">
       <div class="caption">
         <h4><a href="res/{{thing.code}}" target="_self" tooltip="{{thing.info}}">{{thing.name}}</a>
-          <button type="button" class="close" ng-click="main.deleteThing(thing)">&times;</button>
+          <button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button>
         </h4>
         <div>{{thing.date}} by {{thing.user}}</div>
       </div>
       <div class="file-qrcode">
-        <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}" href="gateway://{{main.host}}:{{main.port}}/res/{{thing.code}}"></qrcode>
+        <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{$ctrl.host}}:{{$ctrl.port}}/res/{{thing.code}}" href="gateway://{{$ctrl.host}}:{{$ctrl.port}}/res/{{thing.code}}"></qrcode>
       </div>
     </div>
-    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="upload in main.uploadInProgress">
+    <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="upload in $ctrl.uploadInProgress">
       <div class="caption">
 
         <h4><a href="" tooltip="Upload in progress: {{upload.progress}}%">{{upload.file}}</a>
@@ -53,11 +51,9 @@
         animation="easeInOutQuart"
         animation-delay="0" />
 
+      </div>
+
+
     </div>
-
-
   </div>
 </div>
-</div>
-
-<footer></footer>

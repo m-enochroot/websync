@@ -1,4 +1,4 @@
-// Generated on 2016-01-15 using generator-angular-fullstack 3.3.0-beta.0
+// Generated on 2016-04-19 using generator-angular-fullstack 3.5.0
 'use strict';
 
 module.exports = function (grunt) {
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
         },
         src: ['<%= yeoman.server %>/**/*.{spec,integration}.js']
       },
-      all: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js'],
+      all: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock|app.constant).js'],
       test: {
         src: ['<%= yeoman.client %>/{app,components}/**/*.{spec,mock}.js']
       }
@@ -260,8 +260,7 @@ module.exports = function (grunt) {
       dist: {
         src: [
           '<%= yeoman.dist %>/<%= yeoman.client %>/!(bower_components){,*/}*.{js,css}',
-          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/fonts/*'
+          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -288,6 +287,9 @@ module.exports = function (grunt) {
         ],
         // This is so we update image references in our ng-templates
         patterns: {
+          css: [
+            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images']
+          ],
           js: [
             [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
           ]
@@ -400,7 +402,8 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
-            '<%= yeoman.server %>/**/*'
+            '<%= yeoman.server %>/**/*',
+            '!<%= yeoman.server %>/config/local.env.sample.js'
           ]
         }]
       },
@@ -558,22 +561,24 @@ module.exports = function (grunt) {
     },
 
     // Compiles ES6 to JavaScript using Babel
-    // Compiles ES6 to JavaScript using Babel
     babel: {
       options: {
-        sourceMap: true,
-        optional: [
-          'es7.classProperties'
-        ]
+        sourceMap: true
       },
       server: {
         options: {
-          optional: ['runtime']
+          plugins: [
+            'transform-class-properties',
+            'transform-runtime'
+          ]
         },
         files: [{
           expand: true,
           cwd: '<%= yeoman.server %>',
-          src: ['**/*.{js,json}'],
+          src: [
+            '**/*.js',
+            '!config/local.env.sample.js'
+          ],
           dest: '<%= yeoman.dist %>/<%= yeoman.server %>'
         }]
       }
@@ -663,8 +668,8 @@ module.exports = function (grunt) {
             filePath = filePath.replace('/' + yoClient + '/components/', '../components/');
             return '@import \'' + filePath + '\';';
           },
-          starttag: '// injector',
-          endtag: '// endinjector'
+          starttag: '/* inject:scss */',
+          endtag: '/* endinject */'
         },
         files: {
           '<%= yeoman.client %>/app/app.scss': [
@@ -755,7 +760,7 @@ module.exports = function (grunt) {
       'clean:server',
       'env:all',
       'concurrent:pre',
-      //'tsd',
+      'tsd',
       'concurrent:server',
       'injector',
       'wiredep:client',
@@ -874,7 +879,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'concurrent:pre',
-    //'tsd',
+    'tsd',
     'concurrent:dist',
     'injector',
     'wiredep:client',
@@ -885,7 +890,7 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'babel:server',
-    //'cdnify',
+    'cdnify',
     'cssmin',
     'uglify',
     'filerev',
@@ -893,7 +898,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    //'newer:jshint',
+    'newer:tslint',
     'test',
     'build'
   ]);

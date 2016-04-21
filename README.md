@@ -1,4 +1,5 @@
-![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") [![Coverage Status](https://coveralls.io/repos/github/m-enochroot/websync/badge.svg?branch=master)](https://coveralls.io/github/m-enochroot/websync?branch=master)
+![Travis CI](https://img.shields.io/travis/m-enochroot/websync.svg "Travis-ci badge by shield.io") ![Coverage Status](https://coveralls.io/repos/github/m-enochroot/websync/badge.svg?branch=master)](https://coveralls.io/github/m-enochroot/websync?branch=master)
+![Dependencies status](https://david-dm.org/m-enochroot/websync.svg)
 
 # WebSync
 
@@ -10,7 +11,7 @@ TODO
 
 ## Getting Started
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0-beta.0.
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.5.0.
 
 ### Prerequisites
 

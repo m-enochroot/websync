@@ -14,9 +14,9 @@ import del from 'del';
 //del('./public/uploads/*');
 
 
-User.find({}).removeAsync()
+User.find({}).remove()
   .then(() => {
-    User.createAsync({
+    User.create({
       provider: 'local',
       name: 'Test User',
       email: 'test@gfi.fr',

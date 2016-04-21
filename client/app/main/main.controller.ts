@@ -4,12 +4,13 @@
 
   class MainController {
 
-    constructor($http, private $scope: ng.IScope, socket, Upload, $timeout, $location, Auth) {
+    constructor($http, $scope, socket, Upload, $timeout, $location, Auth) {
 
       this.$http = $http;
       this.Upload = Upload;
       this.$timeout = $timeout;
       this.$location = $location;
+      this.$scope = $scope;
 
       this.host = $location.host();
 
@@ -18,7 +19,9 @@
       this.watchForFilesDropping();
       this.uploadInProgress = [];
       this.Auth = Auth;
-
+      this.socket = socket
+      this.awesomeThings = [];
+/*
       $http.get('/api/things').then(response => {
         this.awesomeThings = response.data.map( thing => {
           console.log(thing);
@@ -28,13 +31,24 @@
 
         socket.syncUpdates('thing', this.awesomeThings);
       });
+*/
+
 
       $scope.$on('$destroy', function() {
         socket.unsyncUpdates('thing');
       });
+
+    }
+
+    $onInit() {
+      this.$http.get('/api/things').then(response => {
+        this.awesomeThings = response.data;
+        this.socket.syncUpdates('thing', this.awesomeThings);
+      });
     }
 
     private $http;
+    private $scope;
     private Upload;
     private $timeout;
     private $location;
@@ -42,6 +56,7 @@
     private port;
     private uploadInProgress;
     private Auth;
+    private socket;
 
     private search;
 
@@ -61,7 +76,7 @@
     }
 
     private watchForFilesDropping() {
-
+console.log('OK');
       this.$scope.$watch(() => this.files, (newFiles) => {
         this.uploadFiles(newFiles);
       });
@@ -136,6 +151,9 @@
   }
 
   angular.module('gatewayApp')
-    .controller('MainController', MainController);
+    .component('main', {
+      templateUrl: 'app/main/main.html',
+      controller: MainController
+    });
 
 })();

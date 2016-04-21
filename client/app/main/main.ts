@@ -5,15 +5,6 @@ angular.module('gatewayApp')
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main',
-        authenticate: 'user'
+        template: '<main></main>'
       });
-  }).run(function($rootScope) {
-  $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {
-    if (next.name === 'logout' && current && current.name && !current.authenticate) {
-      next.referrer = current.name;
-    }
   });
-});

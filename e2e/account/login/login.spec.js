@@ -1,7 +1,7 @@
 'use strict';
 
 var config = browser.params;
-var UserModel = require(config.serverConfig.root + '/server/api/user/user.model');
+var UserModel = require(config.serverConfig.root + '/server/api/user/user.model').default;
 
 describe('Login View', function() {
   var page;
@@ -20,15 +20,15 @@ describe('Login View', function() {
 
   before(function() {
     return UserModel
-      .removeAsync()
+      .remove()
       .then(function() {
-        return UserModel.createAsync(testUser);
+        return UserModel.create(testUser);
       })
       .then(loadPage);
   });
 
   after(function() {
-    return UserModel.removeAsync();
+    return UserModel.remove();
   });
 
   it('should include login form with correct inputs and submit button', function() {
