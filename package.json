@@ -22,7 +22,7 @@
     "mongoose": "^4.1.2",
     "multer": "^1.1.0",
     "bluebird": "^3.3.3",
-    "connect-mongo": "^0.8.1",
+    "connect-mongo": "^1.1.0",
     "jsonwebtoken": "^5.0.0",
     "express-jwt": "^3.0.0",
     "passport": "~0.3.0",
