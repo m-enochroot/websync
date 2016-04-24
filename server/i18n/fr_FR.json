@@ -1,0 +1,11 @@
+{
+    "languageNames": {
+        "en": "Anglais",
+        "es": "Espagnol",
+        "fr": "Français"
+    },
+    "home": {
+        "availableData": "Données disponibles",
+        "helloWorld": "Bonjour Le Monde!"
+    }
+}
