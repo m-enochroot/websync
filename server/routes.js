@@ -38,6 +38,22 @@ export default function(app) {
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
+
+  app.get('/api/lang', function(req, res) {
+      // Check endpoint called with appropriate param.:
+      if(!req.query.lang) {
+          res.status(500).send();
+          return;
+      }
+
+      try {
+          var lang = require('./i18n/' + req.query.lang);
+          res.send(lang); // `lang ` contains parsed JSON
+      } catch(err) {
+          res.status(404).send();
+      }
+  });
+
   app.use('/auth', require('./auth').default);
 
   // All undefined asset or api routes should return a 404
@@ -70,7 +86,7 @@ export default function(app) {
         user: req.body.username,
         info: 'Data file',
         code: req.file.filename,
-        date: moment().format('LLLL')
+        date: moment()
       });
 
       // Return successfull response

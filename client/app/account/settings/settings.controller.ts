@@ -21,11 +21,11 @@ class SettingsController {
     if (form.$valid) {
       this.Auth.changePassword(this.user.oldPassword, this.user.newPassword)
         .then(() => {
-          this.message = 'Password successfully changed.';
+          this.message = 'account.passwordSuccessfullyChanged';
         })
         .catch(() => {
           form.password.$setValidity('mongoose', false);
-          this.errors.other = 'Incorrect password';
+          this.errors.other = 'account.incorrectPassword';
           this.message = '';
         });
     }
