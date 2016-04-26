@@ -86,7 +86,7 @@ export default function(app) {
         user: req.body.username,
         info: 'Data file',
         code: req.file.filename,
-        date: moment().format('LLLL')
+        date: moment()
       });
 
       // Return successfull response

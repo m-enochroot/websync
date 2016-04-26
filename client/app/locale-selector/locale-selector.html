@@ -2,7 +2,7 @@
 <ui-select ng-model="selectLocale"
            on-select="setLocale($item)"
            theme="bootstrap"
-           style="width: 300px;"
+           style="width: 100px;"
            title="Choose a locale">
   <ui-select-match placeholder="Enter a locale">{{$select.selected.value.label | translate}}</ui-select-match>
   <ui-select-choices repeat="locale.value.label as (key, locale) in locales">

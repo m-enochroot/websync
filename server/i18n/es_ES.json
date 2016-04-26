@@ -1,0 +1,43 @@
+{
+    "languageNames": {
+        "en": "Inglés",
+        "es": "Español",
+        "fr": "Francés"
+    },
+    "home": {
+        "availableData": "Ficheros disponibles",
+        "search": "Buscar",
+        "unsupportedDrop": "Drag&Drop no conpatible con ese navigador",
+        "by": "subido por",
+        "uploadInProgress": "Descarga en curso"
+    },
+    "navbar": {
+      "home": "Ficheros",
+      "toogle-navigation": "Toggle navigation",
+      "admin": "Administratión",
+      "login": "Connectarse",
+      "logout": "Desconnectarse",
+      "sign-up": "Registrarse"
+    },
+    "account": {
+      "signUp": "Registrarse",
+      "email": "Email",
+      "password": "Contraseña",
+      "login": "Login",
+      "connexion": "Connectarse",
+      "enterMailAndPassword": "Introduzca su email y contraseña.",
+      "enterValidMail": "Su email no es valido.",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "passwordMustBeAtLeast3Characters": "Su contraseña tiene que ser de más de 3 caracteres.",
+      "confirmNewPassword": "Confirma su nueva contraseña",
+      "passwordMustMatch": "Los dos contraseñas deben ser equales.",
+      "changePassword": "Cambiar mi contraseña",
+      "passwordSuccessfullyChanged": "Su contraseña ha sido modificada.",
+      "incorrectPassword": "Contraseña incorrecta",
+      "userName": "Nombre",
+      "aNameIsRequired": "Introduzca su nombre",
+      "doesntLookLikeAValidEmail": "Su dirreción mail es incorrecta.",
+      "whatsYourEmailAddress": "Cuál es su dirreción mail ?"
+    }
+}

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gatewayApp')
-  .directive('localeSelector', function ($translate) {
+  .directive('localeSelector', function ($translate, moment) {
         return {
             restrict: 'C',
             replace: true,
@@ -11,15 +11,18 @@ angular.module('gatewayApp')
                 scope.locales = {
                   'en_EN' : {
                     label: 'languageNames.en',
-                    code: 'en_EN'
+                    code: 'en_EN',
+                    shortCode: 'en'
                   },
                   'es_ES' : {
                     label: 'languageNames.es',
-                    code: 'es_ES'
+                    code: 'es_ES',
+                    shortCode: 'es'
                   },
                   'fr_FR' : {
                     label: 'languageNames.fr',
-                    code: 'fr_FR'
+                    code: 'fr_FR',
+                    shortCode: 'fr'
                   }
                 };
 
@@ -30,9 +33,14 @@ angular.module('gatewayApp')
                 }
                 scope.selectLocale = scope.locales[locale].label;
 
+                $translate.use(locale);
+                moment.locale(scope.locales[locale].shortCode);
+
                 scope.setLocale = function($item) {
                     $translate.use($item.key);
+                    moment.locale($item.value.shortCode);
                 };
+
             }
         };
     });

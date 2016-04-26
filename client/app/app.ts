@@ -17,7 +17,8 @@ angular.module('gatewayApp', [
   'ja.qr',
   'monospaced.qrcode',
   'angular-svg-round-progressbar',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'angularMoment'
 ])
   .config(function($urlRouterProvider, $locationProvider, $translateProvider) {
     $urlRouterProvider

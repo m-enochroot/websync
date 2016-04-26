@@ -39,6 +39,8 @@ module.exports = function(config) {
       'client/bower_components/angular-translate-loader-url/angular-translate-loader-url.js',
       'client/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
       'client/bower_components/ui-select/dist/select.js',
+      'client/bower_components/moment/moment.js',
+      'client/bower_components/angular-moment/angular-moment.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

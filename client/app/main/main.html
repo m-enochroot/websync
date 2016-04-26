@@ -6,12 +6,12 @@
   <div class="pull-right">
     <form role="search">
 
-      <input ng-model="search" type="text" class="form-control" placeholder="Search">
+      <input ng-model="search" type="text" class="form-control" placeholder="{{'home.search' | translate}}">
 
     </form>
   </div>
   <h1 class="page-header">{{ 'home.availableData' | translate }}</h1>
-  <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+  <div ngf-no-file-drop>{{ 'home.unsupportedDrop' | translate }}</div>
 
 
   <div class="row">
@@ -21,7 +21,7 @@
         <h4><a href="res/{{thing.code}}" target="_self" tooltip="{{thing.info}}">{{thing.name}}</a>
           <button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button>
         </h4>
-        <div>{{thing.date}} by {{thing.user}}</div>
+        <div>{{thing.date | amDateFormat:'LLL'}} {{ 'home.by' | translate }} {{thing.user}}</div>
       </div>
       <div class="file-qrcode">
         <qrcode version="10" error-correction-level="M" size="250" data="gateway://{{$ctrl.host}}:{{$ctrl.port}}/res/{{thing.code}}" href="gateway://{{$ctrl.host}}:{{$ctrl.port}}/res/{{thing.code}}"></qrcode>
@@ -30,10 +30,10 @@
     <div class="thumbnail col-md-4 col-lg-4 col-sm-6 nav nav-tabs nav-stacked" ng-repeat="upload in $ctrl.uploadInProgress">
       <div class="caption">
 
-        <h4><a href="" tooltip="Upload in progress: {{upload.progress}}%">{{upload.file}}</a>
+        <h4><a href="" tooltip="{{ 'home.uploadInProgress' | translate }}: {{upload.progress}}%">{{upload.file}}</a>
           <button type="button" class="close">&times;</button>
         </h4>
-        <div>Upload in progress</div>
+        <div>{{ 'home.uploadInProgress' | translate }}</div>
         <div ng-hide="{{upload.progress === 100 }}"
         style="text-align:center;"
         round-progress

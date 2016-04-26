@@ -6,6 +6,38 @@
     },
     "home": {
         "availableData": "Données disponibles",
-        "helloWorld": "Bonjour Le Monde!"
+        "search": "Recherche",
+        "unsupportedDrop": "Drag&Drop non supporté par ce navigateur",
+        "by": "par",
+        "uploadInProgress": "Téléchargement en cours"
+    },
+    "navbar": {
+      "home": "Accueil",
+      "toogle-navigation": "Toggle navigation",
+      "admin": "Admin",
+      "login": "Connexion",
+      "logout": "Déconnexion",
+      "sign-up": "S'enregistrer"
+    },
+    "account": {
+      "signUp": "S'enregistrer",
+      "email": "Email",
+      "password": "Mot de passe",
+      "login": "Identifiant",
+      "connexion": "Se connecter",
+      "enterMailAndPassword": "Entrer votre email et votre mot de passe.",
+      "enterValidMail": "Votre adresse mail est invalide.",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "passwordMustBeAtLeast3Characters": "Votre mot de passe doit contenir plus de 3 caractères.",
+      "confirmNewPassword": "Confirmer votre nouveau mot de passe",
+      "passwordMustMatch": "Les deux mots de passe doivent être identiques.",
+      "changePassword": "Changer mon mot de passe",
+      "passwordSuccessfullyChanged": "Le mot de passe a été modifié avec succès.",
+      "incorrectPassword": "Mot de passe incorrect",
+      "userName": "Votre Nom",
+      "aNameIsRequired": "Veuillez saisir votre nom",
+      "doesntLookLikeAValidEmail": "Votre adresse mail est invalide.",
+      "whatsYourEmailAddress": "Quelle est votre adresse mail ?"
     }
 }

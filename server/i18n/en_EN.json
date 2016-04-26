@@ -6,6 +6,38 @@
     },
     "home": {
         "availableData": "Available Data",
-        "helloWorld": "Hello, World!"
+        "search": "search",
+        "unsupportedDrop": "File Drag/Drop is not supported for this browser",
+        "by": "by",
+        "uploadInProgress": "Upload in progress"
+    },
+    "navbar": {
+      "home": "Home",
+      "toogle-navigation": "Toggle navigation",
+      "admin": "Admin",
+      "login": "Login",
+      "logout": "Logout",
+      "sign-up": "Sign up"
+    },
+    "account": {
+      "signUp": "Sign up",
+      "email": "Email",
+      "password": "Password",
+      "login": "Login",
+      "connexion": "Login",
+      "enterMailAndPassword": "Please enter your email and password.",
+      "enterValidMail": "Please enter a valid email.",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "passwordMustBeAtLeast3Characters": "Password must be at least 3 characters.",
+      "confirmNewPassword": "Confirm New Password",
+      "passwordMustMatch": "Passwords must match.",
+      "changePassword": "Change password",
+      "passwordSuccessfullyChanged": "Password successfully changed.",
+      "incorrectPassword": "Incorrect password",
+      "userName": "Name",
+      "aNameIsRequired": "A name is required",
+      "doesntLookLikeAValidEmail": "Doesn't look like a valid email.",
+      "whatsYourEmailAddress": "What's your email address?"
     }
 }
