@@ -7,9 +7,12 @@ describe('Directive: oauthButtons', function() {
   beforeEach(module('components/oauth-buttons/oauth-buttons.html'));
 
   var element, parentScope, elementScope;
+  var $httpBackend;
 
   var compileDirective = function(template) {
-    inject(function($compile) {
+    inject(function($compile, _$httpBackend_) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET(/\/api\/lang\?lang=(en|fr|es)/).respond(201, '');
       element = angular.element(template);
       element = $compile(element)(parentScope);
       parentScope.$digest();

@@ -21,6 +21,7 @@ describe('Component: mainComponent', function() {
     $state,
     socket) {
       $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET(/\/api\/lang\?lang=(en|fr|es)/).respond(201, '');
       $httpBackend.expectGET('/api/things')
         .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
