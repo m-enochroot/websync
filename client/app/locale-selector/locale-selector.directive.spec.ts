@@ -26,6 +26,6 @@ describe('Directive: localeSelector', function () {
     element = angular.element('<locale-selector></locale-selector>');
     element = $compile(element)(scope);
     scope.$apply();
-    expect(element.text()).to.equal('Language');
+    expect(element.text()).to.equal('');
   }));
 });
