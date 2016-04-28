@@ -52,7 +52,7 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      '**/*.html': 'ng-html2js',
+      '**/*.html': 'ng-html2js'
     },
 
     ngHtml2JsPreprocessor: {
@@ -67,7 +67,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // reporter types:
     // - dots
@@ -76,12 +76,8 @@ module.exports = function(config) {
     // - junit
     // - growl
     // - coverage
-    reporters: ['spec', 'coverage'],
+    reporters: ['spec'],
 
-    coverageReporter: {
-      type: 'lcovonly', // lcov or lcovonly are required for generating lcov.info files
-      dir: 'coverage/karma'
-    },
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
@@ -98,6 +94,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true
+    singleRun: false,
+
   });
 };

@@ -6,7 +6,8 @@
     },
     "filesGlob": [
         "client/{app,components}/**/*.{spec,mock}.ts",
-        "client/test_typings/**/*.d.ts"
+        "client/test_typings/**/*.d.ts",
+        "client/typings/**/*.d.ts"
     ],
     "files": [
         "client/app/locale-selector/locale-selector.directive.spec.ts",
@@ -22,6 +23,11 @@
         "client/test_typings/selenium-webdriver/selenium-webdriver.d.ts",
         "client/test_typings/sinon-chai/sinon-chai.d.ts",
         "client/test_typings/sinon/sinon.d.ts",
-        "client/test_typings/tsd.d.ts"
+        "client/test_typings/tsd.d.ts",
+        "client/typings/angularjs/angular.d.ts",
+        "client/typings/jquery/jquery.d.ts",
+        "client/typings/lodash/lodash.d.ts",
+        "client/typings/socket.io-client/socket.io-client.d.ts",
+        "client/typings/tsd.d.ts"
     ]
 }
