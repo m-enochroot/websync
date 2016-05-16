@@ -50,9 +50,9 @@ export default function(app) {
           var language = req.query.lang;
           if ("en" === req.query.lang) {
             language = "en_EN";
-          } elsif ("es" === req.query.lang) {
+          } else if ("es" === req.query.lang) {
             language = "es_ES";
-          } elsif ("fr" === req.query.lang) {
+          } else if ("fr" === req.query.lang) {
             language = "fr_FR";
           }
 
