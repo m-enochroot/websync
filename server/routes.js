@@ -47,7 +47,16 @@ export default function(app) {
       }
 
       try {
-          var lang = require('./i18n/' + req.query.lang);
+          var language = req.query.lang;
+          if ("en" === req.query.lang) {
+            language = "en_EN";
+          } elsif ("es" === req.query.lang) {
+            language = "es_ES";
+          } elsif ("fr" === req.query.lang) {
+            language = "fr_FR";
+          }
+
+          var lang = require('./i18n/' + language);
           res.send(lang); // `lang ` contains parsed JSON
       } catch(err) {
           res.status(404).send();
